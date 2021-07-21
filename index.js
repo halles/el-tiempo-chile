@@ -9,7 +9,7 @@ const ACCESS_TOKEN        = process.env.ACCESS_TOKEN;
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 const TWEET_STRUCTURE = "\
-🕘 9AM\n\n\
+Hoy 9AM 🌎\n\n\
         %\n\
         %%\n\
        %%\n\
