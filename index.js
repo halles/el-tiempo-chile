@@ -51,7 +51,7 @@ const parseIcon = (point) => {
 		'50d': '🌫'
 	};
 
-	return icons[point.weatherData.hourly[8].weather[0].icon];
+	return icons[point.weatherData.hourly[1].weather[0].icon];
 }
 
 const mapWeather = async (data) => {
@@ -109,11 +109,13 @@ mapData()
 		return weatherData(data)
 	})
 	.then((data) => {
-		// data.map(el => {
-		// 	console.log(el.weatherData.hourly[8].weather);
-		// })
+		data.map(el => {
+			console.log(el.weatherData.hourly[1]);
+		})
 		return mapWeather(data);
 	})
 	.then((tweet) => {
+		console.log(tweet);
+
 		doTheTweet(tweet);
 	});
