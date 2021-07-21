@@ -8,8 +8,11 @@ const API_SECRET = process.env.API_SECRET;
 const ACCESS_TOKEN        = process.env.ACCESS_TOKEN;
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
+const TIME_STRING = process.env.SCHEDULE === '0 12 * * *' ? '9AM' : '4PM';
+const SLOT_INDEX = process.env.SCHEDULE === '0 12 * * *' ? 1 : 8;
+
 const TWEET_STRUCTURE = "\
-Hoy 9AM 🌎\n\n\
+Hoy " + TIME_STRING + " 🌎\n\n\
         %\n\
         %%\n\
        %%\n\
@@ -51,7 +54,7 @@ const parseIcon = (point) => {
 		'50d': '🌫'
 	};
 
-	return icons[point.weatherData.hourly[1].weather[0].icon];
+	return icons[point.weatherData.hourly[SLOT_INDEX].weather[0].icon];
 }
 
 const mapWeather = async (data) => {
@@ -110,12 +113,17 @@ mapData()
 	})
 	.then((data) => {
 		data.map(el => {
-			console.log(el.weatherData.hourly[1]);
+			console.log(el.weatherData.hourly[SLOT_INDEX]);
 		})
 		return mapWeather(data);
 	})
 	.then((tweet) => {
 		console.log(tweet);
+		console.log({
+			TIME_STRING: TIME_STRING,
+			SLOT_INDEX: SLOT_INDEX,
+			SCHEDULE: process.env.SCHEDULE
+		});
 
 		doTheTweet(tweet);
 	});

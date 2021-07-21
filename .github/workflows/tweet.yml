@@ -1,7 +1,8 @@
 name: tweet
 on:
   schedule:
-    - cron:  '0 13 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,6 +14,7 @@ jobs:
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
       WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+      SCHEDULE: ${{ github.event.schedule }} 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
