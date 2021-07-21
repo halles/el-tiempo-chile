@@ -9,7 +9,7 @@ const ACCESS_TOKEN        = process.env.ACCESS_TOKEN;
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
 const TIME_STRING = process.env.SCHEDULE === '0 12 * * *' ? '9AM' : '4PM';
-const SLOT_INDEX = process.env.SCHEDULE === '0 12 * * *' ? 1 : 8;
+const SLOT_INDEX = process.env.SCHEDULE === '0 12 * * *' ? 1 : 3;
 
 const TWEET_STRUCTURE = "\
 Hoy " + TIME_STRING + " 🌎\n\n\
